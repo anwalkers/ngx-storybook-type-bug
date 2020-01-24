@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ElementRef } from '@angular/core';
 import { TaskItem } from 'src/app/@types/app';
 
 @Component({
@@ -15,7 +15,9 @@ export class TaskComponent implements OnInit {
   @Output() onPinTask: EventEmitter<any> = new EventEmitter();
   @Output() onArchiveTask: EventEmitter<any> = new EventEmitter();
 
-  constructor() {}
+  constructor(private elem: ElementRef) {
+    console.log(elem);
+  }
 
   ngOnInit() {}
 }
