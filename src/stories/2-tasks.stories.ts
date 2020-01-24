@@ -3,14 +3,14 @@ import { action } from '@storybook/addon-actions';
 
 import { TaskComponent } from '../app/components/task/task.component';
 
-import { TaskItem, TaskType } from 'src/app/@types/app';
+import { TaskItem } from 'src/app/@types/app';
 
 export const task: TaskItem = {
   id: '1',
   title: 'Test Task',
   state: 'TASK_INBOX',
   updatedAt: new Date(2018, 0, 1, 9, 0),
-  type: TaskType.new
+  // type: TaskType.new
 };
 
 export const actions = {
