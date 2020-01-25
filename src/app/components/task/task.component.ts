@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ElementRef, Inject, NgZone } from '@angular/core';
 import { TaskItem } from 'src/app/@types/app';
 
 @Component({
@@ -15,9 +15,14 @@ export class TaskComponent implements OnInit {
   @Output() onPinTask: EventEmitter<any> = new EventEmitter();
   @Output() onArchiveTask: EventEmitter<any> = new EventEmitter();
 
-  constructor(private elem: ElementRef) {
-    console.log(elem);
+  constructor(
+    @Inject(ElementRef) private elem: ElementRef,
+    @Inject(NgZone) private _zone: NgZone) {
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this._zone.runOutsideAngular(() => {
+      console.log(this._zone);
+    });
+  }
 }
